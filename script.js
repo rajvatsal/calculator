@@ -13,7 +13,7 @@ function printScreen(e){
     screen.textContent += e.target.textContent;
 }
 
-const buttons = document.querySelectorAll("button");
+const buttons = document.querySelectorAll(".screen-text");
 const screen = document.querySelector(".screen");
 buttons.forEach(button => button.addEventListener("mousedown", printScreen));
 document.querySelector(".clear").addEventListener("mousedown", () => screen.textContent = "")
