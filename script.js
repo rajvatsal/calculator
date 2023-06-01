@@ -10,7 +10,7 @@ function operate(n1, n2, op){
     return this.calc[op](n1, n2)
 }
 function printScreen(e){
-    screen.textContent = e.target.textContent;
+    screen.textContent += e.target.textContent;
 }
 
 const buttons = document.querySelectorAll("button");
