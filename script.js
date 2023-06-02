@@ -24,15 +24,13 @@ function printOperators(e){
     if(screen.textContent === "") return
     dotButton.addEventListener('mousedown', printNumber);
     operators.forEach(operator => operator.removeEventListener('mousedown', printOperators));
+    operators.forEach(operator => operator.removeEventListener('mousedown', operateFirstTwoNum));
     screen.textContent += e.target.textContent;
 }
 function operateFirstTwoNum(){
-    operatorCount++;
     if(screen.textContent === "") return
-    if(operatorCount !== 2) {
-        operators.forEach(operator => operator.removeEventListener('mousedown', operateFirstTwoNum));
-        return
-    }
+    operatorCount++;
+    if(operatorCount !== 2) return
     let calculateString = screen.textContent.split(" ");
     operate(...calculateString);
     if(screen.textContent === "") {
@@ -43,34 +41,52 @@ function operateFirstTwoNum(){
 }
 function resetValues(){
     operatorCount = 0;
+    screen.textContent = "";
+    //Remove existing eventListeners
+    operators.forEach(operator => operator.removeEventListener('mousedown', printOperators));
+    operators.forEach(operator => operator.removeEventListener('mousedown', operateFirstTwoNum));
+    numbers.forEach(number => number.removeEventListener('mousedown', printNumber));
+    //Add new eventListeners
     operators.forEach(operator => operator.addEventListener('mousedown', operateFirstTwoNum));
     operators.forEach(operator => operator.addEventListener('mousedown', printOperators));
     numbers.forEach(number => number.addEventListener('mousedown', printNumber));
-    screen.textContent = "";
 }
 function getRickRolled(){
     let vid = document.createElement('video');
     let src = document.createElement('source');
-    let main = document.querySelector('main');
+    let body = document.querySelector('body');
+    let header = document.querySelector('header');
     vid.setAttribute('height', '100%');
     vid.setAttribute('width', '100%');
+    vid.setAttribute('loop', '');
     src.setAttribute('src', './pics-vids/get-rick-rolled.mp4');
     vid.appendChild(src);
-    //main.insertBefore(vid, screen);
-    //vid.play();
-    //vid.addEventListener('ended', () => main.removeChild(vid));
+    body.insertBefore(vid, header);
+    vid.play();
+    window.addEventListener('keydown', removeRickRoll);
+}
+function removeRickRoll(e) {
+    if(e.code === "Escape" || e.code === "Enter" || e.code === "Space"){
+        let body = document.querySelector('body');
+        let vid = document.querySelector('video');
+        body.removeChild(vid);
+        window.removeEventListener('keydown', removeRickRoll)
+    }
 }
 
+let operatorCount = 0;
 const numbers = document.querySelectorAll('.number');
 const screen = document.querySelector('.screen');
 const operators = document.querySelectorAll('.operator');
 const dotButton = document.querySelector('#dot');
-let operatorCount = 0;
+
 operators.forEach(operator => operator.addEventListener('mousedown', operateFirstTwoNum));
 operators.forEach(operator => operator.addEventListener('mousedown', printOperators));
 numbers.forEach(number => number.addEventListener('mousedown', printNumber));
+
 document.querySelector('.clear').addEventListener('mousedown', resetValues )
 document.querySelector('.equals-to').addEventListener('mousedown', () => {
-    let calculateString = screen.textContent.split(' ');
+    let calculateString = screen.textContent.split(" ");
     operate(...calculateString);
+    if(screen.textContent === "") resetValues();
 });
