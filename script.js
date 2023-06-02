@@ -5,8 +5,8 @@ function operate(n1, op, n2){
     this.calc = {
         "+":  (a, b) => a + b,
         "-":  (a, b) => a - b,
-        "*":  (a, b) => a * b,
-        "/":  (a, b) => a / b,
+        "*":  (a, b) => Math.floor((a * b) * 100) / 100,
+        "/":  (a, b) => Math.floor((a / b) * 100) / 100,
         "**": (a, b) => a ** b,
         "%":  (a, b) => a % b,
     }
@@ -18,15 +18,17 @@ function printScreen(e){
 }
 function operateFirstTwoNum(e){
     operatorCount++;
-    dot.addEventListener("mousedown", printScreen);
+    dotButton.addEventListener("mousedown", printScreen);
+    
     if(operatorCount !== 2) return;
     let calculateString = screen.textContent.split(" ");
     operate(...calculateString);
     screen.textContent += e.target.textContent;
     operatorCount--;
 }
-function resetValues(e){
+function resetValues(){
     operatorCount = 0;
+    dotButton.addEventListener("mousedown", printScreen);
     screen.textContent = "";
 }
 
