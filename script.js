@@ -14,11 +14,26 @@ function operate(n1, op, n2){
 function printScreen(e){
     screen.textContent += e.target.textContent;
 }
+function operateFirstTwoNum(e){
+    operatorCount++;
+    if(operatorCount !== 2) return;
+    let calculateString = screen.textContent.split(" ");
+    operate(...calculateString);
+    screen.textContent += e.target.textContent;
+    operatorCount--;
+}
+function resetValues(e){
+    operatorCount = 0;
+    screen.textContent = ""
+}
 
 const buttons = document.querySelectorAll(".screen-text");
 const screen = document.querySelector(".screen");
+const operators = document.querySelectorAll(".operator");
+let operatorCount = 0;
+operators.forEach(operator => operator.addEventListener("mouseup", operateFirstTwoNum));
 buttons.forEach(button => button.addEventListener("mousedown", printScreen));
-document.querySelector(".clear").addEventListener("mousedown", () => screen.textContent = "")
+document.querySelector(".clear").addEventListener("mousedown", resetValues )
 document.querySelector(".equals-to").addEventListener("mousedown", () => {
     let calculateString = screen.textContent.split(" ");
     operate(...calculateString);
