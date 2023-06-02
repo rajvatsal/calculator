@@ -7,12 +7,12 @@ function operate(n1, op, n2){
         "*":  (a, b) => Math.floor((a * b) * 100) / 100,
         "/":  (a, b) => {
             if(b === 0) getRickRolled();
-            else Math.floor((a / b) * 100) / 100;
+            else  return Math.floor((a / b) * 100) / 100;
         },
         "**": (a, b) => a ** b,
         "%":  (a, b) => a % b,
     }
-    screen.textContent = this.calc[op](n1, n2)
+    screen.textContent = this.calc[op](n1, n2);
 }
 function printNumber(e){
     if(e.target.textContent === ".") e.target.removeEventListener('mousedown', printNumber);
@@ -21,15 +21,18 @@ function printNumber(e){
     screen.textContent += e.target.textContent;
 }
 function printOperators(e){
+    if(screen.textContent === "") return
     dotButton.addEventListener('mousedown', printNumber);
     operators.forEach(operator => operator.removeEventListener('mousedown', printOperators));
     screen.textContent += e.target.textContent;
 }
-function operateFirstTwoNum(e){
+function operateFirstTwoNum(){
     operatorCount++;
-    operators.forEach(operator => operator.removeEventListener('mousedown', operateFirstTwoNum));
-    if(operatorCount !== 2) return
-    operators.forEach(operator => operator.addEventListener('mousedown', operateFirstTwoNum));
+    if(screen.textContent === "") return
+    if(operatorCount !== 2) {
+        operators.forEach(operator => operator.removeEventListener('mousedown', operateFirstTwoNum));
+        return
+    }
     let calculateString = screen.textContent.split(" ");
     operate(...calculateString);
     if(screen.textContent === "") {
@@ -40,10 +43,9 @@ function operateFirstTwoNum(e){
 }
 function resetValues(){
     operatorCount = 0;
-    operators.forEach(operator => operator.addEventListener('mouseup', operateFirstTwoNum));
+    operators.forEach(operator => operator.addEventListener('mousedown', operateFirstTwoNum));
     operators.forEach(operator => operator.addEventListener('mousedown', printOperators));
     numbers.forEach(number => number.addEventListener('mousedown', printNumber));
-    dotButton.addEventListener('mousedown', printNumber);
     screen.textContent = "";
 }
 function getRickRolled(){
