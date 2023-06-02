@@ -12,7 +12,9 @@ function operate(n1, op, n2){
         "**": (a, b) => a ** b,
         "%":  (a, b) => a % b,
     }
-    screen.textContent = this.calc[op](n1, n2);
+    op in this.calc === true && !n2 === NaN?
+    screen.textContent = this.calc[op](n1, n2)
+    :screen.textContent = `Invalid inputs`;
 }
 function printNumber(e){
     if(e.target.textContent === ".") e.target.removeEventListener('mousedown', printNumber);
