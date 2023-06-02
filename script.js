@@ -12,7 +12,7 @@ function operate(n1, op, n2){
         "**": (a, b) => a ** b,
         "%":  (a, b) => a % b,
     }
-    op in this.calc === true && !n2 === NaN?
+    n2 === 0 && op === "/"?
     screen.textContent = this.calc[op](n1, n2)
     :screen.textContent = `Invalid inputs`;
 }
