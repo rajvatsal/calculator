@@ -1,4 +1,5 @@
 function operate(n1, op, n2){
+    !Number.isInteger(+n2)? n2 = n1: n2 = n2;
     n1 = Math.floor(parseFloat(n1) * 100) / 100;
     n2 = Math.floor(parseFloat(n2) * 100) / 100;
     this.calc = {
