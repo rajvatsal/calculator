@@ -12,10 +12,13 @@ function operate(n1, op, n2){
         "**": (a, b) => a ** b,
         "%":  (a, b) => a % b,
     }
-    n2 === 0 && op === "/"?
-    screen.textContent = this.calc[op](n1, n2)
-    :screen.textContent = `Invalid inputs`;
+    let result = this.calc[op](n1, n2);
+    if(Number.isNaN(result) === true){
+        alert("invalid input");
+        screen.textContent = '';
+    }else screen.textContent = result;
 }
+
 function printNumber(e){
     if(e.target.textContent === ".") e.target.removeEventListener('mousedown', printNumber);
     operators.forEach(operator => operator.addEventListener('mousedown', operateFirstTwoNum));
