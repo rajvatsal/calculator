@@ -88,6 +88,6 @@ document.querySelector('.clear').addEventListener('mousedown', resetValues)
 document.querySelector('.equals-to').addEventListener('mousedown', () => {
     let calculateString = screen.textContent.split(" ");
     operate(...calculateString);
-    //If you got rickRolled or gave invalid input reset everything
-    if(!screen.textContent) resetValues();
+    //If you got rickRolled or gave invalid input reset everything otherwise reset operatorCount to 0
+    !screen.textContent? resetValues(): operatorCount = 0;
 });
