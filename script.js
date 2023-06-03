@@ -19,7 +19,7 @@ function operate(n1, op, n2){
         screen.textContent = result;
 }
 function printNumber(e){
-    if(e.target.textContent === ".") e.target.removeEventListener('mousedown', printNumber);
+    if(e.target.textContent === '.') e.target.removeEventListener('mousedown', printNumber);
     operators.forEach(operator => operator.addEventListener('mousedown', operateFirstTwoNum));
     operators.forEach(operator => operator.addEventListener('mousedown', printOperators));
     screen.textContent += e.target.textContent;
@@ -46,7 +46,7 @@ function operateFirstTwoNum(){
 }
 function resetValues(){
     operatorCount = 0;
-    screen.textContent = "";
+    screen.textContent = '';
     operators.forEach(operator => operator.addEventListener('mousedown', operateFirstTwoNum));
     operators.forEach(operator => operator.addEventListener('mousedown', printOperators));
     numbers.forEach(number => number.addEventListener('mousedown', printNumber));
