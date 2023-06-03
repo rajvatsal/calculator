@@ -21,8 +21,6 @@
     font-style: italic;
 }
 *{
-    margin: 0;
-    padding: 0;
     font-family: "Fira Sans";
 }
 body{
@@ -71,4 +69,13 @@ strong{
 }
 main{
     margin: 150px;
+}
+.row{
+    display: flex;
+
+}
+.row button{
+    width: 20px;
+    padding: 10px 20px;
+    justify-content: center;
 }

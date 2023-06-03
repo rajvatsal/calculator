@@ -56,6 +56,7 @@ function getRickRolled(){
     let src = document.createElement('source');
     let main = document.querySelector('main');
     vid.setAttribute('height', '100%');
+    vid.setAttribute('style', 'padding-bottom: 30px;')
     vid.setAttribute('width', '100%');
     vid.setAttribute('loop', '');
     src.setAttribute('src', './pics-vids/get-rick-rolled.mp4');
@@ -63,13 +64,15 @@ function getRickRolled(){
     main.insertBefore(vid, screen);
     vid.play();
     window.addEventListener('keydown', removeRickRoll);
-    resetValues();
+
 }
 function removeRickRoll(e) {
     if(e.code === "Escape" || e.code === "Enter" || e.code === "Space"){
         let main = document.querySelector('main');
         let vid = document.querySelector('video');
         main.removeChild(vid);
+        resetValues();
+
         window.removeEventListener('keydown', removeRickRoll);
     }
 }
