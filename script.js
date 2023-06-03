@@ -76,12 +76,19 @@ function removeRickRoll(e) {
         window.removeEventListener('keydown', removeRickRoll);
     }
 }
+function changeColor(e){
+    e.target.classList.add('hover');
+}
+function removeColor(e){
+    e.target.classList.remove('hover');
+}
 
 let operatorCount = 0;
 const numbers = document.querySelectorAll('.number');
 const screen = document.querySelector('.screen');
 const operators = document.querySelectorAll('.operator');
 const dotButton = document.querySelector('#dot');
+const buttons = document.querySelectorAll('button');
 
 operators.forEach(operator => operator.addEventListener('mousedown', operateFirstTwoNum));
 operators.forEach(operator => operator.addEventListener('mousedown', printOperators));
@@ -94,3 +101,5 @@ document.querySelector('.equals-to').addEventListener('mousedown', () => {
     //If you got rickRolled or gave invalid input reset everything otherwise reset operatorCount to 0
     !screen.textContent? resetValues(): operatorCount = 0;
 });
+buttons.forEach(button => button.addEventListener('mouseover', changeColor));
+buttons.forEach(button => button.addEventListener('mouseleave', removeColor));

@@ -21,12 +21,12 @@
     font-style: italic;
 }
 *{
-    font-family: "Fira Sans";
+    font-family: 'Orbitron' , "Fira Sans", sans-serif;
 }
 body{
     display: flex;
     flex-direction: column;
-    background-color: #03071E;
+    background-color: #ffffff;
     margin: 0px 0px;
 }
 footer{
@@ -89,4 +89,11 @@ button{
     justify-content: center;
     align-items: center;
     border-style:none;
+    transition: 0.1s ease-in-out 0s;
 }
+.hover{
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+ 
