@@ -47,7 +47,6 @@ footer{
 
 header{
     display: flex;
-    flex-wrap: warp;
     margin-top: auto;
     max-width: 100vw;
     align-items:last baseline;
@@ -56,7 +55,6 @@ header{
     font-size: 6rem;
     height: 40vh;
     background-color: #F0A202;
-
 }
 em{
     color: white;
@@ -75,7 +73,7 @@ strong{
     margin: 0px auto;
     margin: 0px 0px;
     min-height: 60px;
-    min-width: 360px;
+    min-width: 90%;
     background-color: rgb(100%, 100%, 100%, 85%);
     border-radius: 5px;
     color: rgb(0, 0, 0);
@@ -97,7 +95,8 @@ main{
     background-color: #F0A202;
     padding: 20px ;
     border-radius: 5px;
-    width: 400px;
+    box-shadow: 0px 10px 100px #F0A202;
+    margin-bottom: 150px;
 }
 .row{
     display: flex;
@@ -128,7 +127,7 @@ button{
 }
 .spacer{
     aspect-ratio: 900/600;
-    max-width: 100%;
+    max-width: 100vw;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
