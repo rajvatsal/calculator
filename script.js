@@ -82,6 +82,14 @@ function changeColor(e){
 function removeColor(e){
     e.target.classList.remove('hover');
 }
+function popLastCharacter(){
+    let arr = screen.textContent.replaceAll(" ", "").split("");
+    let last = arr.pop();
+    last === " "? screen.textContent = arr.join("").splice(arr-length - 2, 2): screen.textContent = arr.join("");
+
+    if(last === ".") dotButton.addEventListener('mousedown', printNumber);
+    else if(last === "+" || last === "-" || last === "*" || last === "/") operatorCount--;
+}
 
 let operatorCount = 0;
 const numbers = document.querySelectorAll('.number');
@@ -89,6 +97,7 @@ const screen = document.querySelector('.screen');
 const operators = document.querySelectorAll('.operator');
 const dotButton = document.querySelector('#dot');
 const buttons = document.querySelectorAll('button');
+const del = document.querySelector('.del');
 
 operators.forEach(operator => operator.addEventListener('mousedown', operateFirstTwoNum));
 operators.forEach(operator => operator.addEventListener('mousedown', printOperators));
@@ -103,3 +112,5 @@ document.querySelector('.equals-to').addEventListener('mousedown', () => {
 });
 buttons.forEach(button => button.addEventListener('mouseover', changeColor));
 buttons.forEach(button => button.addEventListener('mouseleave', removeColor));
+
+del.addEventListener('mousedown', popLastCharacter);
