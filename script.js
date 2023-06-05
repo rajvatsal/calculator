@@ -4,14 +4,14 @@ function operate(n1, op, n2){
     this.calc = {
         "+":  (a, b) => a + b,
         "-":  (a, b) => a - b,
-        "*":  (a, b) => Math.floor((a * b) * 100) / 100,
-        "/":  (a, b) => b === 0? getRickRolled(): Math.floor((a / b) * 100) / 100, //If dividing by 0 then getRickRolled
+        "*":  (a, b) => a * b,
+        "/":  (a, b) => b === 0? getRickRolled(): a / b,
         "**": (a, b) => a ** b,
         "%":  (a, b) => a % b,
         "undefined": () => NaN,
     }
     //When user enters incomplete operation eg: 5 +
-    let result = this.calc[op](n1, n2);
+    let result = Math.floor((this.calc[op](n1, n2)) * 100) / 100;
     if(Number.isNaN(result)){
         alert("ERROR");
         resetValues();
