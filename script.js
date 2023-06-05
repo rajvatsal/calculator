@@ -83,12 +83,17 @@ function removeColor(e){
     e.target.classList.remove('hover');
 }
 function popLastCharacter(){
-    let arr = screen.textContent.replaceAll(" ", "").split("");
+    let arr = screen.textContent.split("");
     let last = arr.pop();
-    last === " "? screen.textContent = arr.join("").splice(arr-length - 2, 2): screen.textContent = arr.join("");
-
-    if(last === ".") dotButton.addEventListener('mousedown', printNumber);
-    else if(last === "+" || last === "-" || last === "*" || last === "/") operatorCount--;
+    if(last === " "){
+        arr.splice(arr.length - 2, 2);
+        operators.forEach(operator => operator.addEventListener('mousedown', operateFirstTwoNum));
+        operators.forEach(operator => operator.addEventListener('mousedown', printOperators));
+        operatorCount--;
+        dotButton.removeEventListener('mousedown', printNumber);
+    }else if(last === ".")
+        dotButton.addEventListener('mousedown', printNumber);
+    screen.textContent = arr.join("");
 }
 
 let operatorCount = 0;
