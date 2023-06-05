@@ -34,15 +34,17 @@ footer{
     margin-top: auto;
     background-color: #F0A202;
     color: #051014;
-    padding: 20px 20px;
+    padding: 1.46412884334vw 1.46412884334vw;
     text-align: center;
+    font-size: 1.17130307467vw;
+    height: 1.39092240117vw;
 }
 .footer-strong{
     background-color:#F0A202;
     padding: 0px 0px;
 }
 .footer-em{
-    padding: 2px 5px;
+    padding: 0.14641288433vw 0.36603221083vw;
 }
 
 header{
@@ -51,27 +53,27 @@ header{
     align-items:last baseline;
     justify-content: flex-start;
     padding-left: 0.5em;
-    font-size: 6rem;
-    min-height: 40vh;
+    font-size: 7.02781844802vw;
+    height: 18.6230600293vw;
     background-color: #F0A202;
 }
 em{
     color: white;
     background-color: rgb(0%, 0%, 0%);
-    padding: 5px 15px;
+    padding: 0.36603221083vw 1.0980966325vw;
 }
 strong{
     color: #051014;
     background-color: white;
-    font-size: 1rem;
-    padding: 5px 15px;
+    font-size: 1.17130307467vw;
+    padding: 0.36603221083vw 1.0980966325vw;
     border-radius: 2px;
 }
 .screen{
-    padding: 30px 20px;
+    padding: 2.19619326501vw 1.46412884334vw;
     margin: 0px auto;
-    height: 60px;
-    min-width: 90%;
+    height: 4.39238653001vw;
+    width: 26.3543191801vw;
     background-color: rgb(100%, 100%, 100%, 85%);
     border-radius: 5px;
     color: rgb(0, 0, 0);
@@ -83,33 +85,35 @@ strong{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 29.2825768668vw;
 }
 main{
     margin: 0px auto 100px;
     display: flex;
     flex-direction: column;
     background-color: #F0A202;
-    padding: 20px;
+    padding: 1.46412884334vw;
     border-radius: 5px;
     box-shadow: 0px 0px 100px #F0A202;
-    
+    height: 27.0863836018vw;
+    width: 29.2825768668vw;
 }
 .row{
     display: flex;
-    min-width: 400px;
+    min-width: 29.2825768668vw;
     justify-content: center;
 }
 button{
     display: flex;
-    height: 50px;
-    width: 100%;
+    height: 3.66032210835vw;
+    width: 7.32064421669vw;
     background-color: rgb(100%, 100%, 100%, 50%);
     color: #070600;
     justify-content: center;
     align-items: center;
     border-style:none;
-    transition: 0.1s ease-in-out 0s;   
+    transition: 0.1s ease-in-out 0s;
+    font-size: 0.97608345534vw;
 }
 .equals-to{
     font-size: 1.5vw;
@@ -133,4 +137,7 @@ button{
 }
 .layer2{
     background-image: url('./svg-inverese-color/footer.svg')
+}
+.clear, .del{
+    flex: 1 1 auto;
 }
