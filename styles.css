@@ -89,7 +89,7 @@ header{
 }
 main{
     box-sizing: border-box;
-    margin: 0px auto 100px;
+    margin: 0px auto;
     display: flex;
     flex-direction: column;
     background-color: #F0A202;
@@ -97,6 +97,8 @@ main{
     border-radius: 5px;
     box-shadow: 0px 0px 100px #F0A202;
     width: min(440px, 100vw);
+    position: relative;
+    z-index: 1;
 }
 .row{
     display: flex;
