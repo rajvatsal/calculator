@@ -1,11 +1,15 @@
 function operate(n1, op, n2){
     //change from string to float values so this.calc doesn't work with strings
     n1 = parseFloat(n1), n2 = parseFloat(n2);
+    if(op === "/" && n2 === 0){
+        getRickRolled();
+        return
+    }
     this.calc = {
         "+":  (a, b) => a + b,
         "-":  (a, b) => a - b,
         "*":  (a, b) => a * b,
-        "/":  (a, b) => b === 0? getRickRolled(): a / b,
+        "/":  (a, b) => a / b,
         "**": (a, b) => a ** b,
         "%":  (a, b) => a % b,
         "undefined": () => NaN,
@@ -64,7 +68,6 @@ function getRickRolled(){
     main.insertBefore(vid, screen);
     vid.play();
     window.addEventListener('keydown', removeRickRoll);
-
 }
 function removeRickRoll(e) {
     if(e.code === "Escape" || e.code === "Enter" || e.code === "Space"){
